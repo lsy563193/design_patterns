@@ -1,0 +1,61 @@
+@startuml
+
+abstract Command {
+    + void execute()
+}
+
+ConcreteCommand  -up-|> Command
+
+abstract Receiver{
+    + void action()
+}
+
+class ConcreteCommand {
+    Receiver *m_pReceiver;    
+}
+
+class Invoker {
+    void call()
+}
+
+Clien -right->Receiver
+Receiver -right-> ConcreteCommand
+Invoker -right-> Command
+@enduml
+
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@startuml
+
+abstract Command {
+    -ConcreteReceiver1
+    -ConcreteReceiver2
+    -ConcreteReceiver3
+    ---
+    + void execute()
+}
+interface Receiver{
+    + void command1()
+    + void command2()
+    + void command3()
+}
+
+class Invoker {
+    void setCommand()
+    void call()
+}
+
+Clien -right->Invoker
+Invoker -up--> Command
+Command -up->ConcreteReceiver1
+Command -up->ConcreteReceiver2
+Command -up->ConcreteReceiver3
+Command -down-> ConcreteCommand1
+Command -down-> ConcreteCommand2
+Command -down-> ConcreteCommand3
+ConcreteReceiver1 -up-|> Receiver
+ConcreteReceiver2 -up-|> Receiver
+ConcreteReceiver3 -up-|> Receiver
+ 
+
+@enduml
