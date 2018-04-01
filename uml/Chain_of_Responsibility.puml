@@ -1,0 +1,11 @@
+@startuml
+clien -right-> Handle
+Handle --> Handle :+succesor
+abstract Handle {
+    + HandleRequest()
+}
+
+ConcreteHandle1 -up-|> Handle
+ConcreteHandle2 -up-|> Handle
+ConcreteHandle3 -up-|> Handle
+@enduml
