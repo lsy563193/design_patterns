@@ -1,0 +1,43 @@
+@startuml
+AMediator --right--> AColleague
+
+abstract AColleague
+concreteMediator -up-|> AMediator
+ConcreteColleague1 -up--|> AColleague
+ConcreteColleague2 -up--|> AColleague
+ConcreteColleague3 -up--|> AColleague
+
+concreteMediator -right-> ConcreteColleague1
+concreteMediator -right-> ConcreteColleague2
+concreteMediator -right-> ConcreteColleague3
+
+clien -up-> ConcreteColleague1
+clien -up-> ConcreteColleague2
+clien -up-> ConcreteColleague3
+
+abstract AMediator {
+    -ConcreteColleague1
+    -ConcreteColleague2
+    -ConcreteColleague3
+
+    +doSomething1()
+    +doSomething2()
+    +doSomething3()
+}
+
+abstract AColleague {
+    -pMediator
+}
+class ConcreteColleague1 {
+    +doSomethint1()
+    +pMediator.doSomethint1()
+}
+class ConcreteColleague2 {
+    +doSomethint2()
+    +pMediator.doSomethint2()
+}
+class ConcreteColleague3 {
+    +doSomethint3()
+    +pMediator.doSomethint3()
+}
+@enduml
